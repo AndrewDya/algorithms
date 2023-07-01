@@ -1,25 +1,27 @@
-boy_number = int(input("Загадайте число от 1 до 100: "))
-computer_number, answer_boy, count_number = 50, 0, 1
-COUNT = 50
-print(f"{count_number} попытка, число: {computer_number}")
-while computer_number != boy_number:
-	if boy_number > computer_number:
-		answer_boy = 2
-	elif boy_number < computer_number:
-		answer_boy = 3
-	if answer_boy == 2:
-		computer_number = computer_number + COUNT // 2
-		if COUNT > 1:
-			COUNT //= 2
-		elif COUNT == 1:
-			computer_number = computer_number + COUNT
-	elif answer_boy == 3:
-		computer_number = computer_number - COUNT // 2
-		if COUNT > 1:
-			COUNT //= 2
-		elif COUNT == 1:
-			computer_number = computer_number - COUNT
-	count_number += 1
-	print(f"{count_number} попытка, число: {computer_number}")
-print(
-	f"{computer_number} = {boy_number}, за {count_number} попыток")
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return False  # Если элемент не найден
+
+
+# Пример использования
+list_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+search_num = 6
+result = binary_search(list_a, search_num)
+
+if result:
+    print(f"Элемент {search_num} найден в индексе {result}")
+else:
+    print("Элемент не найден")
+

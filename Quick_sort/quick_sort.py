@@ -1,13 +1,11 @@
-def quick_sort(a, n):
-	if n <= 1:
-		return a
+def quick_sort(arr, arr_len):
+	if arr_len <= 1:
+		return arr
 
-	pivot = a[n // 2]
-	left = []
-	middle = []
-	right = []
+	pivot = arr[arr_len // 2]
+	left, middle, right = [], [], []
 
-	for num in a:
+	for num in arr:
 		if num < pivot:
 			left.append(num)
 		elif num == pivot:
@@ -15,10 +13,10 @@ def quick_sort(a, n):
 		else:
 			right.append(num)
 
-	return quick_sort(left, len(left)) + middle + quick_sort(right, len(right))
+	return quick_sort(left, arr_len(left)) + middle + quick_sort(right, arr_len(right))
 
 
 # Пример использования
 list_a = [4, 9, 0, 17, 23, 4, 1, 0]
-n = len(list_a)
-print(quick_sort(list_a, n))
+len_list = len(list_a)
+print(quick_sort(list_a, len_list))
